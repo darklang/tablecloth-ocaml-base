@@ -2,8 +2,3 @@
  (name tablecloth)
  (public_name tablecloth-native)
  (libraries base str))
-
-(rule
- (target TableclothContainer.ml)
- (action
-  (copy ../../rescript/src/TableclothContainer.ml ./TableclothContainer.ml)))
