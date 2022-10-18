@@ -5,11 +5,11 @@ order: "2"
 
 ## t is the main type of a module
 
-In Reason / OCaml it is a convention for the primary type of a module to be named `t`.
+In OCaml it is a convention for the primary type of a module to be named `t`.
 
 This means that when you want to refer to a type without `open`ing a module you don't end up repeating yourself:
 
-```reason
+```ocaml
 let food: String.string = /* ... */
 
 /* compared to */
@@ -25,22 +25,22 @@ Functions which take a function as an argument will almost always be a labelled 
 
 Take [`Array.map`](/api#Array.map) as an example:
 
-```reason
-let map: (array('a), ~f:('a => 'b)) => array('b);
+```ocaml
+let map: 'a array -> f:('a -> 'b) -> 'b array;;
 ```
 
 This means that it's easy to use these functions by either applying all of the
 arguments:
 
-```reason
-Array.map([|1,2,3|], ~f=(number) => number * 3);
+```ocaml
+Array.map ~f:(fun number -> number * 3) [|1; 2; 3|];;
 ```
 
 or by chaining functions together using [`|>`](/api#Fun.pipe)
 
-```reason
-Array.filter([|1,2,3|], ~f=Int.isOdd)
-|> Array.map(~f=(number) => number * 3);
+```ocaml
+Array.filter ~f:Int.is_odd [|1; 2; 3|]
+|> Array.map ~f:(fun number -> number * 3);;
 ```
 
 ## exn is for exception
@@ -69,13 +69,13 @@ When a function could behave in slightly different ways, but we want to provide 
 
 The best example of this is [`Float.atan2`](/api#Float.atan2)
 
-### ___Unsafe means "could raise an exception"
+### ___unsafe means "could raise an exception"
 
 Some functions have 'unsafe' versions which instead of returning an [`Option`](/api#Option) or a [`Result`](/api#Result) could raise an exception.
 
 Sometimes this can be for performance, and sometimes you just need an escape hatch.
 
-See [`Option.get`](/api#Option.get) and [`Option.getUnsafe`](/api#Option.getUnsafe)
+See [`Option.unwrap`](/api#Option.unwrap) and [`Option.unwrap_unsafe`](/api#Option.unwrap_unsafe)
 
 ## Modules
 
@@ -88,15 +88,8 @@ In a similar way to modules primary type being [named `t`](#t-is-the-main-type-o
 ## Labels for all arguments except Data
 
 In OCaml, the convention is to have the data argument come last, as idiomatic
-OCaml uses pipes (`|>`) heavily. In Rescript, the convention is to have the
-data argument come first, as this makes type checking and error messages
-better. (The "data" argument is the "subject" of the function call, the list in
-List functions, the string in String functions, etc).
-
-In Tablecloth, we get the best of both worlds by ensuring that all arguments
-apart from the data argument use labelled arguments. This way, it is in both
-first and last place, and improves type checking and error messages while also
-supporting both pipe-first and pipe-last.
+OCaml uses pipes (`|>`) heavily.  In Tablecloth, we do this by ensuring that
+all arguments apart from the data argument use labelled arguments.
 
 Note that this is the opposite the way standard libraries for related languages
 like
@@ -104,8 +97,6 @@ like
 or
 [Haskell](https://downloads.haskell.org/~ghc/latest/docs/html/libraries/base-4.13.0.0/GHC-List.html)
 tend to do things.
-
-See [Javier Chavarri's excellent blog post](https://www.javierchavarri.com/data-first-and-data-last-a-comparison/) and the discussions on the [Rescript](https://github.com/rescript-lang/rescript-compiler/issues/2625) and [Reason](https://github.com/facebook/reason/issues/1452#issuecomment-350424873) GitHub issue trackers.
 
 ## Check out the API
 

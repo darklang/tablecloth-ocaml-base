@@ -5,7 +5,3 @@ To deploy to opam
 - git push origin x.y.z
 - opam-publish tablecloth-native -v x.y.z https://github.com/darklang/tablecloth/archive/x.y.z.tar.gz
 - make the pull request work
-
-To deploy to npm
-
-- npm publish
