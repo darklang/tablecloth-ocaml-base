@@ -15,7 +15,6 @@ _build
 /ocamldoc-json-generator/lib/
 /ocamldoc-json-generator/node_modules/
 /ocamldoc-json-generator/_native/
-/ocamldoc-json-generator/_rescript/
 esy.lock
 _esy
 .bsbuild

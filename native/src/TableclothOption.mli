@@ -42,10 +42,6 @@ val some : 'a -> 'a option
 
     However OCaml doesn't support piping to variant constructors.
 
-    Note that when using the Reason syntax you {b can} use fast pipe ([->]) with variant constructors, so you don't need this function.
-
-    See the {{: https://rescript-lang.org/docs/manual/v8.0.0/pipe#pipe-into-variants} Reason docs } for more.
-
     {2 Examples}
 
     {[String.reverse("desserts") |> Option.some = Some "stressed" ]}
@@ -250,7 +246,7 @@ val tap : 'a t -> f:('a -> unit) -> unit
     {[
       Option.tap (Some "Dog") ~f:print_endline
       (* prints "Dog" *)
-    ]} 
+    ]}
 *)
 
 val to_array : 'a t -> 'a array

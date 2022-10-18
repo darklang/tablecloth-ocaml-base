@@ -44,14 +44,6 @@ val error : 'error -> ('ok, 'error) t
 (** A function alternative to the [Error] constructor which can be used in places where
     the constructor isn't permitted such as at the of a {!Fun.pipe} or functions like {!List.map}.
 
-    {b Note}
-
-    When targetting the Bucklescript compiler you {b can} use constructors with the fast pipe.
-
-    {[5 |. Ok = (Ok 5)]}
-
-    See the {{: https://rescript-lang.org/docs/manual/v8.0.0/pipe#pipe-into-variants} Reason docs } for more.
-
     {2 Examples}
 
     {[Int.negate 3 |> Result.error = Error (-3)]}

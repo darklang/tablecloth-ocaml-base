@@ -21,9 +21,7 @@
 
     {b Note:} The number of bits used for an [int] is platform dependent.
 
-    When targeting Bucklescript {{: https://bucklescript.github.io/docs/en/common-data-types.html#int }  Ints are 32 bits}.
-
-    When targeting native OCaml uses 31-bits on 32-bit platforms and 63-bits on 64-bit platforms
+    OCaml uses 31-bits on 32-bit platforms and 63-bits on 64-bit platforms
     which means that [int] math is well-defined in the range [-2 ** 30] to [2 ** 30 - 1] for 32bit platforms [-2 ** 62] to [2 ** 62 - 1] for 64bit platforms.
 
     Outside of that range, the behavior is determined by the compilation target.
