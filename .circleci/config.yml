@@ -82,6 +82,6 @@ workflows:
       - build-and-test:
           matrix:
             parameters:
-              base-version: ["v0.14.1"]
+              base-version: ["v0.14.3"]
               ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12", "4.13", "4.14"]
       - source-code-formatting

@@ -3,7 +3,7 @@ ifndef TC_NATIVE_OCAML_SWITCH
 endif
 
 ifndef TC_BASE_VERSION
-	TC_BASE_VERSION := v0.14.1
+	TC_BASE_VERSION := v0.14.3
 endif
 
 
