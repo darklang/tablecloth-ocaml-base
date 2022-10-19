@@ -24,7 +24,6 @@ jobs:
       - run: make deps
       - run: make build
       - run: make test
-      - run: make doc
       - run: make integration-test
       - save_cache:
           key: v3-native-dependencies-<< parameters.ocaml-version >>-<< parameters.base-version >>-{{ .Branch }}-{{ checksum "tablecloth-native.opam" }}

@@ -23,11 +23,6 @@ watch-test:
 	@printf "\n\e[31mBuilding native...\e[0m\n"
 	opam config exec -- dune test --watch
 
-doc:
-	@printf "\n\e[31mBuilding native docs ...\e[0m\n"
-	opam config exec -- dune build @doc -f
-	@printf "\n\e[31mBuilt!\e[0m\n"
-
 .PHONY: test
 test:
 	@printf "\n\e[31mRunning tablecloth-native tests ...\e[0m\n"
@@ -46,7 +41,7 @@ deps:
 	@printf "\n\e[31mInstalling native dependencies ...\e[0m\n"
 	opam update
 	opam switch set ${TC_NATIVE_OCAML_SWITCH}
-	opam install alcotest.1.4.0 base.${TC_BASE_VERSION} dune.2.9.0 junit.2.0.2 junit_alcotest.2.0.2 odoc.1.5.3 -y
+	opam install alcotest.1.4.0 base.${TC_BASE_VERSION} dune.2.9.0 junit.2.0.2 junit_alcotest.2.0.2 -y
 	@printf "\n\e[31mInstalled!\e[0m\n"
 
 deps-format:
@@ -56,7 +51,7 @@ deps-format:
 	opam install ocamlformat.${TC_OCAMLFORMAT_VERSION} -y
 	@printf "\n\e[31mInstalled!\e[0m\n"
 
-all: deps build test integration-test doc
+all: deps build test integration-test
 	@printf "\n\e[31mAll done!\e[0m\n"
 
 .PHONY: check-format format
