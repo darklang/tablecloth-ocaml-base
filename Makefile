@@ -28,11 +28,13 @@ doc:
 	opam config exec -- dune build @doc -f
 	@printf "\n\e[31mBuilt!\e[0m\n"
 
+.PHONY: test
 test:
 	@printf "\n\e[31mRunning tablecloth-native tests ...\e[0m\n"
 	opam config exec -- dune runtest -f
 	@printf "\n\e[31mTested!\e[0m\n"
 
+.PHONY: integration-test
 integration-test:
 	echo -e "\n\e[31mBuilding native integration test\e[0m"
 	cd integration-test;\
