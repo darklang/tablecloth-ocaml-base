@@ -1,10 +1,10 @@
 # Tablecloth-ocaml-base
 
-[![CircleCI](https://circleci.com/gh/darklang/tablecloth.svg?style=shield)](https://circleci.com/gh/darklang/tablecloth)
-[![Opam](https://img.shields.io/badge/opam_package-0.7.0-brightgreen)](https://opam.ocaml.org/packages/tablecloth-ocaml-base)
+[![CircleCI](https://circleci.com/gh/darklang/tablecloth-ocaml-base.svg?style=shield)](https://circleci.com/gh/darklang/tablecloth-ocaml-base)
+[![Opam](https://img.shields.io/badge/opam_package-0.8.0-brightgreen)](https://opam.ocaml.org/packages/tablecloth-ocaml-base)
 
 Tablecloth is a library that shims over various standard libraries so they have the same function and module names, which using idiomatic types and patterns in each language.
--
+
 This is the OCaml implementation, which uses Base, pipe-last, keyword arguments, and snake_case.
 
 **Tablecloth is alpha-quality software, and is pre-1.0. It is currently undergoing
@@ -44,14 +44,11 @@ let () =
 
 ## Supported versions
 
-Tablecloth for native OCaml supports OCaml 4.08-4.10 and Base
-v0.12.2/v0.13.2. We are open to supporting other versions:
+Tablecloth for native OCaml supports OCaml 4.08-4.14 and Base
+v0.12.2/v0.13.2/v0.14.3. We are open to supporting other versions:
 
-- OCaml 4.11 is believed to work but is not officially supported as there is no
-  docker container for it in CI.
 - OCaml 4.06 and 4.07 require small tweaks to our build system
 - Base v0.9, v0.10, and v0.11 require small code changes
-- Base v0.14 require small dependency tweaks
 
 ### Development
 
