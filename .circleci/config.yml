@@ -24,7 +24,6 @@ jobs:
       - run: make deps
       - run: make build
       - run: make test
-      - run: make doc
       - run: make integration-test
       - save_cache:
           key: v3-native-dependencies-<< parameters.ocaml-version >>-<< parameters.base-version >>-{{ .Branch }}-{{ checksum "tablecloth-native.opam" }}
@@ -33,23 +32,24 @@ jobs:
 
   source-code-formatting:
     docker:
-      - image: ocaml/opam:ubuntu-ocaml-4.10
+      - image: ocaml/opam:ubuntu-ocaml-4.14
     environment:
       CI: true
+      TC_NATIVE_OCAML_SWITCH: "4.14"
     working_directory: ~/repo
     steps:
       - checkout:
           path: ~/repo
       - restore_cache:
           keys:
-            - v0-source-dependencies-ocamlformat-0.19
+            - v0-source-dependencies-ocamlformat-0.20
       # m4 is a system dependency required by conf-m4 -> ocamlfind -> fmt -> alcotest
       - run: sudo apt-get install -y m4
       - run: echo 'export PATH=/usr/lib/cargo/bin/fd:$PATH' >> ~/.bash_env
       - run: make deps-format
       - run: make check-format
       - save_cache:
-          key: v0-source-dependencies-ocamlformat-0.19
+          key: v0-source-dependencies-ocamlformat-0.20
           paths:
             - ~/.opam
 
@@ -82,6 +82,6 @@ workflows:
       - build-and-test:
           matrix:
             parameters:
-              base-version: ["v0.14.1"]
-              ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12"]
+              base-version: ["v0.14.3"]
+              ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12", "4.13", "4.14"]
       - source-code-formatting
