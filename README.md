@@ -11,7 +11,9 @@ This is the OCaml implementation, which uses Base, pipe-last, keyword arguments,
 some significant shifts and some libraries listed below are not available yet.
 Caveat emptor.**
 
-Check out the [website](https://www.tablecloth.dev) for our interactive API documentation.
+Check out the [website](https://www.tablecloth.dev) for our interactive API
+documentation, or join the community in the [Tablecloth
+Discord](https://www.tablecloth.dev/discord-invite).
 
 ## Installation
 
