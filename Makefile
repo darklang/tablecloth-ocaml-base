@@ -8,7 +8,7 @@ endif
 
 
 # We should use something more recent, but opam keeps telling me they don't exist
-TC_OCAMLFORMAT_VERSION := 0.19.0
+TC_OCAMLFORMAT_VERSION := 0.20.1
 
 build:
 	@printf "\n\e[31mBuilding tablecloth-native ...\e[0m\n"
@@ -56,9 +56,7 @@ all: deps build test integration-test
 
 .PHONY: check-format format
 check-format:
-	opam install ocamlformat.0.19.0 -y
 	opam config exec -- dune build @fmt
 
 format:
-	opam install ocamlformat.0.19.0 -y
 	opam config exec -- dune build @fmt --auto-promote

@@ -32,23 +32,24 @@ jobs:
 
   source-code-formatting:
     docker:
-      - image: ocaml/opam:ubuntu-ocaml-4.10
+      - image: ocaml/opam:ubuntu-ocaml-4.14
     environment:
       CI: true
+      TC_NATIVE_OCAML_SWITCH: "4.14"
     working_directory: ~/repo
     steps:
       - checkout:
           path: ~/repo
       - restore_cache:
           keys:
-            - v0-source-dependencies-ocamlformat-0.19
+            - v0-source-dependencies-ocamlformat-0.20
       # m4 is a system dependency required by conf-m4 -> ocamlfind -> fmt -> alcotest
       - run: sudo apt-get install -y m4
       - run: echo 'export PATH=/usr/lib/cargo/bin/fd:$PATH' >> ~/.bash_env
       - run: make deps-format
       - run: make check-format
       - save_cache:
-          key: v0-source-dependencies-ocamlformat-0.19
+          key: v0-source-dependencies-ocamlformat-0.20
           paths:
             - ~/.opam
 
