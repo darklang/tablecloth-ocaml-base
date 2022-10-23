@@ -18,12 +18,12 @@
         end)
       end
 
-      type animal = 
+      type animal =
         | Cow
         | Pig
         | Alpacca
 
-      let point_to_animal : animal Map.Of(Point).t = 
+      let point_to_animal : animal Map.Of(Point).t =
         Map.from_list (module Point) [((0, 0), Alpacca); ((3, 4), Cow); ((6, 7), Pig)]
     ]}
 
@@ -394,6 +394,11 @@ val filter :
       ]
     ]}
 *)
+
+val filter_map :
+     ('key, 'value, 'id) t
+  -> f:(key:'key -> value:'value -> 'b option)
+  -> ('key, 'b, 'id) t
 
 val partition :
      ('key, 'value, 'id) t

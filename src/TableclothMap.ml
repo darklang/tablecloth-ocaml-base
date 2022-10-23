@@ -86,6 +86,10 @@ let map_with_index t ~f = Base.Map.mapi t ~f:(fun ~key ~data -> f key data)
 
 let filter = Base.Map.filter
 
+let filter_map m ~f =
+  Base.Map.filter_mapi m ~f:(fun ~key ~data:value -> f ~key ~value)
+
+
 let partition m ~f =
   Base.Map.partitioni_tf m ~f:(fun ~key ~data -> f ~key ~value:data)
 
