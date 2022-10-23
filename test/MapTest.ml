@@ -49,4 +49,29 @@ let suite =
               |> toEqual
                    (let open Eq in
                    option int)
-                   (Some 1) ) ) )
+                   (Some 1) ) ) ;
+      describe "filterMap" (fun () ->
+          test
+            "maps values by their results and filters out items with no esult"
+            (fun () ->
+              let filter_map_map =
+                Map.String.from_list
+                  [ ("Cat", 4)
+                  ; ("Owl", 2)
+                  ; ("Fox", 5)
+                  ; ("Frog", 12)
+                  ; ("Camel", 2)
+                  ]
+              in
+
+              let ansList =
+                Map.filter_map filter_map_map ~f:(fun ~key:_ ~value ->
+                    if value mod 2 = 0 then Some (value / 2) else None )
+                |> Map.to_list
+              in
+
+              expect ansList
+              |> toEqual
+                   (let open Eq in
+                   list (pair string int))
+                   [ ("Camel", 1); ("Cat", 2); ("Frog", 6); ("Owl", 1) ] ) ) )
