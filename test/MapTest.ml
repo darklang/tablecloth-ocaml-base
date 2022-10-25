@@ -29,7 +29,7 @@ let suite =
       describe "Poly.from_list" (fun () ->
           test "creates a map from a list" (fun () ->
               let map = Map.Poly.from_list [ (`Ant, "Ant"); (`Bat, "Bat") ] in
-              expect (Map.get map `Ant)
+              expect (Map.get map ~key:`Ant)
               |> toEqual
                    (let open Eq in
                    option string)
@@ -37,7 +37,7 @@ let suite =
       describe "Int.from_list" (fun () ->
           test "creates a map from a list" (fun () ->
               let map = Map.Int.from_list [ (1, "Ant"); (2, "Bat") ] in
-              expect (Map.get map 1)
+              expect (Map.get map ~key:1)
               |> toEqual
                    (let open Eq in
                    option string)
@@ -45,7 +45,7 @@ let suite =
       describe "String.from_list" (fun () ->
           test "creates a map from a list" (fun () ->
               let map = Map.String.from_list [ ("Ant", 1); ("Bat", 1) ] in
-              expect (Map.get map "Ant")
+              expect (Map.get map ~key:"Ant")
               |> toEqual
                    (let open Eq in
                    option int)
