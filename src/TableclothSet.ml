@@ -34,15 +34,15 @@ let length = Base.Set.length
 
 let is_empty = Base.Set.is_empty
 
-let includes = Base.Set.mem
+let includes set ~value = Base.Set.mem set value
 
 let ( .?{} ) (set : ('element, _) t) (element : 'element) : bool =
-  includes set element
+  includes set ~value:element
 
 
-let add = Base.Set.add
+let add set ~value = Base.Set.add set value
 
-let remove = Base.Set.remove
+let remove set ~value = Base.Set.remove set value
 
 let difference = Base.Set.diff
 

@@ -137,7 +137,7 @@ val ( .?{}<- ) :
     ]}
  *)
 
-val remove : ('key, 'value, 'id) t -> 'key -> ('key, 'value, 'id) t
+val remove : ('key, 'value, 'id) t -> key:'key -> ('key, 'value, 'id) t
 (** Removes a key-value pair from a map based on they provided key.
 
     {2 Examples}
@@ -149,7 +149,7 @@ val remove : ('key, 'value, 'id) t -> 'key -> ('key, 'value, 'id) t
         ("Rhino", 3);
         ("Shrew", 56_423);
       ] in
-      Map.remove animal_populations "Mosquito" |> Map.to_list = [
+      animal_populations |> Map.remove ~key:"Mosquito" |> Map.to_list = [
         ("Elephant", 3_156);
         ("Rhino", 3);
         ("Shrew", 56_423);
@@ -157,7 +157,7 @@ val remove : ('key, 'value, 'id) t -> 'key -> ('key, 'value, 'id) t
     ]}
 *)
 
-val get : ('key, 'value, 'id) t -> 'key -> 'value option
+val get : ('key, 'value, 'id) t -> key:'key -> 'value option
 (** Get the value associated with a key. If the key is not present in the map, returns [None].
 
     {2 Examples}
@@ -168,7 +168,7 @@ val get : ('key, 'value, 'id) t -> 'key -> 'value option
       ("Rhino", 3);
       ("Shrew", 56_423);
     ] in
-    Map.get animal_populations "Shrew" = Some 56_423;
+    animal_populations |> Map.get ~key:"Shrew" = Some 56_423;
 *)
 
 val ( .?{} ) : ('key, 'value, _) t -> 'key -> 'value option
@@ -201,7 +201,8 @@ val update :
         ("Shrew", 56_423);
       ] in
 
-      Map.update animal_populations ~key:"Hedgehog" ~f:(fun population ->
+      animal_populations
+      |> Map.update ~key:"Hedgehog" ~f:(fun population ->
         match population with
         | None -> Some 1
         | Some count -> Some (count + 1)
@@ -262,7 +263,7 @@ val find :
     ]}
 *)
 
-val includes : ('key, _, _) t -> 'key -> bool
+val includes : ('key, _, _) t -> key:'key -> bool
 (** Determine if a map includes [key].  *)
 
 val minimum : ('key, _, _) t -> 'key option

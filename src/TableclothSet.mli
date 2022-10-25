@@ -44,27 +44,27 @@ module Of (M : TableclothComparator.S) : sig
   type nonrec t = (M.t, M.identity) t
 end
 
-(** {1 Create}  
-  
+(** {1 Create}
+
   You can create a Set by providing a module conform to the {!Comparator.S} signature by using {!empty}, {!singleton}, {!from_list} or {!from_array}.
 
   Specialised versions of the {!empty}, {!singleton}, {!from_list} and {!from_array} functions available in the {!Set.Int} and {!Set.String} sub-modules.
 *)
 
 val empty : ('a, 'identity) TableclothComparator.s -> ('a, 'identity) t
-(** A set with nothing in it. 
+(** A set with nothing in it.
 
     Often used as an initial value for functions like {!Array.fold}
 
     {2 Examples}
 
     {[
-      Array.fold 
-        [|'m'; 'i'; 's'; 's'; 'i'; 's'; 's';'i';'p';'p';'i'|] 
+      Array.fold
+        [|'m'; 'i'; 's'; 's'; 'i'; 's'; 's';'i';'p';'p';'i'|]
         ~initial:(Set.empty (module Char))
         ~f:Set.add
       |> Set.to_array
-      = [|'i'; 'm'; 'p'; 's'|] 
+      = [|'i'; 'm'; 'p'; 's'|]
     ]}
 *)
 
@@ -97,34 +97,34 @@ val from_list :
 
 (** {1 Basic operations} *)
 
-val add : ('a, 'id) t -> 'a -> ('a, 'id) t
+val add : ('a, 'id) t -> value:'a -> ('a, 'id) t
 (** Insert a value into a set.
 
     {2 Examples}
 
-    {[Set.add (Set.Int.from_list [1; 2]) 3 |> Set.to_list = [1; 2; 3]]}
-    {[Set.add (Set.Int.from_list [1; 2]) 2 |> Set.to_list = [1; 2]]}
+    {[Set.Int.from_list [1; 2] |> Set.add ~value:3 |> Set.to_list = [1; 2; 3]]}
+    {[Set.Int.from_list [1; 2] |> Set.add ~value:2 |> Set.to_list = [1; 2]]}
 *)
 
-val remove : ('a, 'id) t -> 'a -> ('a, 'id) t
+val remove : ('a, 'id) t -> value:'a -> ('a, 'id) t
 (** Remove a value from a set, if the set doesn't contain the value anyway, returns the original set.
 
     {2 Examples}
 
-    {[Set.remove (Set.Int.from_list [1; 2]) 2 |> Set.to_list = [1]]}
+    {[Set.Int.from_list [1; 2] |> Set.remove ~value:2 |> Set.to_list = [1]]}
     {[
       let original_set = Set.Int.from_list [1; 2] in
-      let new_set = Set.remove original_set 3 in
+      let new_set = Set.remove ~value:3 original_set in
       original_set = new_set
     ]}
 *)
 
-val includes : ('a, _) t -> 'a -> bool
+val includes : ('a, _) t -> value:'a -> bool
 (** Determine if a value is in a set.
 
     {2 Examples}
 
-   {[Set.includes (Set.String.from_list ["Ant"; "Bat"; "Cat"]) "Bat" = true]}
+   {[Set.includes (Set.String.from_list ["Ant"; "Bat"; "Cat"]) ~value:"Bat" = true]}
 *)
 
 val ( .?{} ) : ('element, _) t -> 'element -> bool

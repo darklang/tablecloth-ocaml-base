@@ -42,7 +42,7 @@ let from_list
 
 let is_empty = Base.Map.is_empty
 
-let includes = Base.Map.mem
+let includes m ~key = Base.Map.mem m key
 
 let length = Base.Map.length
 
@@ -59,12 +59,12 @@ let ( .?{}<- ) (map : ('key, 'value, 'id) t) (key : 'key) (value : 'value) :
   add map ~key ~value
 
 
-let remove = Base.Map.remove
+let remove m ~key = Base.Map.remove m key
 
-let get = Base.Map.find
+let get m ~key = Base.Map.find m key
 
 let ( .?{} ) (map : ('key, 'value, _) t) (key : 'key) : 'value option =
-  get map key
+  get map ~key
 
 
 let update m ~key ~f = Base.Map.change m key ~f

@@ -15,10 +15,10 @@ let suite =
   suite "Set" (fun () ->
       test "creates a set from a list" (fun () ->
           let set = Set.from_list (module Int) [ 1; 2 ] in
-          expect (Set.includes set 1) |> toEqual Eq.bool true ) ;
+          expect (Set.includes set ~value:1) |> toEqual Eq.bool true ) ;
       test "from_array" (fun () ->
           let set = Set.from_array (module Coordinate) [| (0, 0); (0, 1) |] in
-          expect (Set.includes set (0, 1)) |> toEqual Eq.bool true ) ;
+          expect (Set.includes set ~value:(0, 1)) |> toEqual Eq.bool true ) ;
       test "union" (fun () ->
           let xAxis = Set.from_list (module Coordinate) [ (0, 0); (0, 1) ] in
           let yAxis = Set.from_list (module Coordinate) [ (0, 0); (1, 0) ] in
@@ -28,8 +28,8 @@ let suite =
       describe "Int" (fun () ->
           test "creates a set from a list" (fun () ->
               let set = Set.Int.from_list [ 1; 2 ] in
-              expect (Set.includes set 1) |> toEqual Eq.bool true ) ) ;
+              expect (Set.includes set ~value:1) |> toEqual Eq.bool true ) ) ;
       describe "String" (fun () ->
           test "creates a set from a list" (fun () ->
               let set = Set.String.from_list [ "Ant"; "Bat" ] in
-              expect (Set.includes set "Ant") |> toEqual Eq.bool true ) ) )
+              expect (Set.includes set ~value:"Ant") |> toEqual Eq.bool true ) ) )
