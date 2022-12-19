@@ -29,8 +29,8 @@
 
         let compare book_a book_b =
           String.compare book_a.isbn book_b.isbn
-        
-        include Comparator.Make(struct 
+
+        include Comparator.Make(struct
           type nonrec t = t
 
           let compare = compare
@@ -55,7 +55,7 @@ module type T = sig
   val compare : t -> t -> int
 end
 
-type ('a, 'identity) t
+type ('a, 'identity) t = ('a, 'identity) Base.Comparator.t
 
 (** This just is an alias for {!t}.  *)
 type ('a, 'identity) comparator = ('a, 'identity) t
