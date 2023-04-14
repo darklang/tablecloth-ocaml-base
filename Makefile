@@ -11,7 +11,7 @@ endif
 TC_OCAMLFORMAT_VERSION := 0.20.1
 
 build:
-	@printf "\n\e[31mBuilding tablecloth-native ...\e[0m\n"
+	@printf "\n\e[31mBuilding tablecloth-base ...\e[0m\n"
 	opam config exec -- dune build
 	@printf "\n\e[31mBuilt!\e[0m\n"
 
@@ -25,7 +25,7 @@ watch-test:
 
 .PHONY: test
 test:
-	@printf "\n\e[31mRunning tablecloth-native tests ...\e[0m\n"
+	@printf "\n\e[31mRunning tablecloth-base tests ...\e[0m\n"
 	opam config exec -- dune runtest -f
 	@printf "\n\e[31mTested!\e[0m\n"
 
