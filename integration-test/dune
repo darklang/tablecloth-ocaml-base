@@ -2,6 +2,6 @@
  (name main)
  (flags
   (-warn-error +A))
- (libraries tablecloth-native))
+ (libraries tablecloth-base))
 
 (dirs :standard \ node_modules)

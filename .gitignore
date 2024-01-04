@@ -4,7 +4,7 @@
 .vscode
 _build
 /lib
-/tablecloth-native.install
+/tablecloth-base.install
 /integration-test/native/_build
 
 esy.lock

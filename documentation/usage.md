@@ -44,6 +44,6 @@ https://dune.readthedocs.io/en/stable/concepts.html#ocaml-flags
 ```
 (library
  (name example-library)
- (libraries tablecloth-native)
+ (libraries tablecloth-base)
  (flags (:open Tablecloth)))
  ```
