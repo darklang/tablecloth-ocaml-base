@@ -12,7 +12,7 @@ authors: [
   "Pomin Wu <pomin.wu@proton.me>"
 ]
 license: "MIT with some exceptions"
-homepage: "hhttps://github.com/darklang/tablecloth-ocaml-base"
+homepage: "https://github.com/darklang/tablecloth-ocaml-base"
 bug-reports: "https://github.com/darklang/tablecloth-ocaml-base/issues"
 dev-repo: "git://github.com/darklang/tablecloth-ocaml-base"
 depends: [ "ocaml" {>= "4.08" < "4.15" } "dune" {build} "base" { >= "v0.12.0" & < "v0.15.0" } ]
