@@ -66,22 +66,48 @@ workflows:
       # Base 0.10.0 requires ocaml < 4.07, which we don't support
       # Base 0.11.1 requires ocaml < 4.07, which we don't support
       # Base 0.12 requires ocaml < 4.10
-      - build-and-test:
-          matrix:
-            parameters:
-              base-version: ["v0.12.2"]
-              ocaml-version: ["4.08", "4.09"]
+      #- build-and-test:
+      #    matrix:
+      #      parameters:
+      #        base-version: ["v0.12.2"]
+      #        ocaml-version: ["4.08", "4.09"]
       # Base 0.13.2 requires ocaml < 4.12
-      - build-and-test:
-          matrix:
-            parameters:
-              base-version: ["v0.13.2"]
-              ocaml-version: ["4.08", "4.09", "4.10", "4.11"]
+      #- build-and-test:
+      #    matrix:
+      #      parameters:
+      #        base-version: ["v0.13.2"]
+      #        ocaml-version: ["4.08", "4.09", "4.10", "4.11"]
       # Base 0.14.1 requires ocaml >= 4.08
       # Currently broken as due to Either definition
+      #- build-and-test:
+      #    matrix:
+      #      parameters:
+      #        base-version: ["v0.14.3"]
+      #        ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12", "4.13", "4.14"]
+      #- build-and-test:
+      #    matrix:
+      #      parameters:
+      #        base-version: ["v0.14.3"]
+      #        ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12", "4.13", "4.14"]
+      # Base 0.16 requires ocaml >= 4.14
       - build-and-test:
           matrix:
             parameters:
-              base-version: ["v0.14.3"]
-              ocaml-version: ["4.08", "4.09", "4.10", "4.11", "4.12", "4.13", "4.14"]
+              base-version: ["v0.16.0"]
+              ocaml-version: ["4.14", "5.0", "5.1", "5.2"]
+      - build-and-test:
+          matrix:
+            parameters:
+              base-version: ["v0.16.1"]
+              ocaml-version: ["4.14", "5.0", "5.1", "5.2"]
+      - build-and-test:
+          matrix:
+            parameters:
+              base-version: ["v0.16.2"]
+              ocaml-version: ["4.14", "5.0", "5.1", "5.2"]
+      - build-and-test:
+          matrix:
+            parameters:
+              base-version: ["v0.16.3"]
+              ocaml-version: ["4.14", "5.0", "5.1", "5.2"]
       - source-code-formatting
