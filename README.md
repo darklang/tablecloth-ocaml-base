@@ -46,18 +46,17 @@ let () =
 
 ## Supported versions
 
-Tablecloth for native OCaml supports OCaml 4.08-4.14 and Base
-v0.12.2/v0.13.2/v0.14.3. We are open to supporting other versions:
+Tablecloth for native OCaml supports OCaml 4.10-4.14 with Base v0.15.1, and OCaml 4.14 and above with Base v0.16.3/v0.17.1.  We are open to supporting other versions:
 
 - OCaml 4.06 and 4.07 require small tweaks to our build system
-- Base v0.9, v0.10, and v0.11 require small code changes
+- Base v0.9 to v0.14 require small code changes
 
 ### Development
 
 When developing Tablecloth, you can test it against different versions of
 OCaml (native) and Base, using the following commands:
 
-- `TC_BASE_VERSION=v0.14.0 TC_NATIVE_OCAML_SWITCH=4.11.0 make deps`
+- `TC_BASE_VERSION=v0.16.3 TC_NATIVE_OCAML_SWITCH=5.2.0 make deps`
 
 ## Contributions
 

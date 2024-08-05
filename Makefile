@@ -3,7 +3,7 @@ ifndef TC_NATIVE_OCAML_SWITCH
 endif
 
 ifndef TC_BASE_VERSION
-	TC_BASE_VERSION := v0.14.3
+	TC_BASE_VERSION := v0.15.1
 endif
 
 
@@ -41,7 +41,7 @@ deps:
 	@printf "\n\e[31mInstalling native dependencies ...\e[0m\n"
 	opam update
 	opam switch set ${TC_NATIVE_OCAML_SWITCH}
-	opam install alcotest.1.4.0 base.${TC_BASE_VERSION} dune.2.9.1 junit.2.0.2 junit_alcotest.2.0.2 odoc.2.1.1 -y
+	opam install alcotest.1.4.0 base.${TC_BASE_VERSION} dune.3.16.0 junit.2.0.2 junit_alcotest.2.0.2 odoc.2.4.2 -y
 	@printf "\n\e[31mInstalled!\e[0m\n"
 
 deps-format:
